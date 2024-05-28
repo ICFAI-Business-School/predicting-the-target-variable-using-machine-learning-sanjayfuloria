@@ -1,25 +1,11 @@
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error
+import unittest
+import regression
 
-# Load your dataset
-data = pd.read_csv('path/to/your/dataset.csv')
+class TestRegression(unittest.TestCase):
+    def test_regression(self):
+        # Ensure the regression script has the necessary components
+        self.assertTrue(hasattr(regression, 'model'), "The model is not defined in the script")
+        self.assertTrue(hasattr(regression, 'mse'), "The mean squared error is not defined in the script")
 
-# Split the dataset into features and target variable
-X = data[['feature1', 'feature2', 'feature3']]
-y = data['target']
-
-# Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# Initialize and train the regression model
-model = LinearRegression()
-model.fit(X_train, y_train)
-
-# Predict on the testing set
-y_pred = model.predict(X_test)
-
-# Evaluate the model
-mse = mean_squared_error(y_test, y_pred)
-print(f'Mean Squared Error: {mse}')
+if __name__ == '__main__':
+    unittest.main()
