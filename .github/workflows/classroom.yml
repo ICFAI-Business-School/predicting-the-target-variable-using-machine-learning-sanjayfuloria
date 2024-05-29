@@ -25,8 +25,8 @@ jobs:
         comparison-method: contains
         timeout: 10
         max-score: 50
-    - name: Python Test
-      id: python-test
+    - name: Prediction Test
+      id: prediction-test
       uses: classroom-resources/autograding-python-grader@v1
       with:
         timeout: 10
@@ -36,6 +36,6 @@ jobs:
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
         PREDICTING-THE-TARGET-VARIABLE-USING-MACHINE-LEARNING_RESULTS: "${{steps.predicting-the-target-variable-using-machine-learning.outputs.result}}"
-        PYTHON-TEST_RESULTS: "${{steps.python-test.outputs.result}}"
+        PREDICTION-TEST_RESULTS: "${{steps.prediction-test.outputs.result}}"
       with:
-        runners: predicting-the-target-variable-using-machine-learning,python-test
+        runners: predicting-the-target-variable-using-machine-learning,prediction-test
