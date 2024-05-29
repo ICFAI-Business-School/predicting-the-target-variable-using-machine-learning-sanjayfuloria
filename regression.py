@@ -24,6 +24,7 @@ model.fit(X_train, y_train)
 
 # Predict on the testing set
 y_pred = model.predict(X_test)
+print(f'The Predicted Value:{y_pred}')
 
 # Evaluate the model
 mse = mean_squared_error(y_test, y_pred)
